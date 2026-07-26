@@ -65,6 +65,7 @@ Page Pulse addresses the need for quick, actionable, lightweight website health 
   "meta_description": "This domain is for use in illustrative examples in documents.",
   "h1_count": 1,
   "image_count": 0,
+  "images_missing_alt": 0,
   "word_count": 156
 }
 ```
