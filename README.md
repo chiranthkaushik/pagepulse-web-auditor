@@ -3,6 +3,12 @@
 > **Page Pulse** is a professional, high-performance website audit tool built with Python, Flask, BeautifulSoup4, and vanilla HTML/CSS/JS. It audits any website URL in real-time, measuring response speed and extracting critical structural and SEO webpage information.
 
 ---
+## Live Demo
+https://pagepulse-web-auditor.onrender.com
+
+## 🎥 Loom Walkthrough
+
+[Watch the Loom Walkthrough](https://www.loom.com/share/2311b4158f9941bcbd885d1f894cc32e)
 
 ## 📖 Table of Contents
 - [Project Overview](#-project-overview)
