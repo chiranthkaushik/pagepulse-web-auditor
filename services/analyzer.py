@@ -79,7 +79,9 @@ def extract_page_metrics(html_content: str) -> Tuple[str, str, int, int, int]:
     h1_count = len(soup.find_all("h1"))
 
     # 4. Image Count
-    image_count = len(soup.find_all("img"))
+    all_images = soup.find_all("img")
+image_count = len(all_images)
+images_missing_alt = len([img for img in all_images if not img.get("alt", "").strip()])
 
     # 5. Word Count (Extract text excluding scripts/styles/metadata)
     for element in soup(["script", "style", "noscript", "svg", "header", "footer", "nav"]):
@@ -89,7 +91,7 @@ def extract_page_metrics(html_content: str) -> Tuple[str, str, int, int, int]:
     words = [word for word in body_text.split() if word.strip()]
     word_count = len(words)
 
-    return page_title, meta_description, h1_count, image_count, word_count
+    return page_title, meta_description, h1_count, image_count, images_missing_alt, word_count
 
 
 def analyze_url(raw_url: str, timeout_seconds: float = 10.0) -> Dict[str, Any]:
@@ -207,7 +209,7 @@ def analyze_url(raw_url: str, timeout_seconds: float = 10.0) -> Dict[str, Any]:
 
     # Parse HTML metrics
     try:
-        page_title, meta_description, h1_count, image_count, word_count = extract_page_metrics(response.text)
+        page_title, meta_description, h1_count, image_count, images_missing_alt, word_count = extract_page_metrics(response.text)
     except Exception as e:
         raise AnalysisError(f"Failed to parse webpage HTML content: {str(e)}", status_code=500)
 
@@ -217,6 +219,7 @@ def analyze_url(raw_url: str, timeout_seconds: float = 10.0) -> Dict[str, Any]:
         "page_title": page_title,
         "meta_description": meta_description,
         "h1_count": h1_count,
-        "image_count": image_count,
-        "word_count": word_count,
+       "image_count": image_count,
+       "images_missing_alt": images_missing_alt,
+       "word_count": word_count,
     }
