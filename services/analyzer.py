@@ -80,8 +80,8 @@ def extract_page_metrics(html_content: str) -> Tuple[str, str, int, int, int]:
 
     # 4. Image Count
     all_images = soup.find_all("img")
-image_count = len(all_images)
-images_missing_alt = len([img for img in all_images if not img.get("alt", "").strip()])
+    image_count = len(all_images)
+    images_missing_alt = len([img for img in all_images if not img.get("alt", "").strip()])
 
     # 5. Word Count (Extract text excluding scripts/styles/metadata)
     for element in soup(["script", "style", "noscript", "svg", "header", "footer", "nav"]):
