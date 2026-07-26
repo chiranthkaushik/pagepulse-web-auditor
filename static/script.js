@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const valH1Count = document.getElementById("val-h1-count");
     const valImageCount = document.getElementById("val-image-count");
     const valWordCount = document.getElementById("val-word-count");
+    const valImagesMissingAlt = document.getElementById("val-images-missing-alt");
 
     // State variables
     let currentAuditData = null;
@@ -412,6 +413,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // 6. Image Count
         const images = (data.image_count !== undefined) ? data.image_count : 0;
         valImageCount.textContent = `${images} ${images === 1 ? "Image" : "Images"}`;
+
+        // 6.5 Images Missing Alt
+        const missingAlt = (data.images_missing_alt !== undefined)
+        ? data.images_missing_alt
+        : 0;
+
+        valImagesMissingAlt.textContent =
+        `${missingAlt} ${missingAlt === 1 ? "Image" : "Images"}`;
 
         // 7. Word Count
         const words = (data.word_count !== undefined) ? data.word_count : 0;
