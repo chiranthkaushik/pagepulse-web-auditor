@@ -1,0 +1,6 @@
+{
+  "name": "Page Pulse",
+  "description": "Web audit tool analyzing website URLs for status, speed, SEO metadata, headings, images, and word counts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
